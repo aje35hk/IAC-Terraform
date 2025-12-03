@@ -1,0 +1,32 @@
+[
+    {
+        "name": "test",
+        "image": "${container_image}",
+        "portMappings": [
+            {
+                "name": "test-${container_port}-tcp",
+                "containerPort": ${container_port
+                },
+                "hostPort": ${container_port
+                },
+                "protocol": "tcp"
+            }
+        ],
+        "essential": true,
+        "environment": [],
+        "mountPoints": [],
+        "volumesFrom": [],
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-group": "/ecs/test-container",
+                "mode": "non-blocking",
+                "awslogs-create-group": "true",
+                "max-buffer-size": "25m",
+                "awslogs-region": "${aws_region}",
+                "awslogs-stream-prefix": "ecs"
+            }
+        },
+        "systemControls": []
+    }
+]
